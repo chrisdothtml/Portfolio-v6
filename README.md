@@ -1,5 +1,3 @@
 Portfolio
 ===
-Version 6 of my online portfolio
-
-URL: http://deacy.io
+Version 6 of my online portfolio - [http://deacy.io](http://deacy.io)
