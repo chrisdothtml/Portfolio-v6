@@ -37,8 +37,6 @@ module.exports = (grunt) ->
 					'assets/js/core-scripts.min.js': 'assets/js/core-scripts.js'
 					'assets/js/functions.min.js': 'assets/js/functions.js'
 					'assets/js/plugins.min.js': 'assets/js/plugins.js'
-					'assets/js/ie9.min.js': 'assets/js/ie9.js'
-					'assets/js/google-analytics.min.js': 'assets/js/google-analytics.js'
 		watch:
 			html:
 				files: ['assets/html/*.jade']
