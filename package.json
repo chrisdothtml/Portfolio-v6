@@ -1,5 +1,6 @@
 {
   "name": "portfolio",
+  "description": "Version 6 of my online portfolio",
   "version": "6.2.0",
   "devDependencies": {
     "grunt": "~0.4.1",
