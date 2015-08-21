@@ -66,7 +66,7 @@ $(document).ready(function() {
     if (error === true) {
       $(errors).addClass('error');
     } else {
-      $.post('inc/php/sendMail.php', {
+      $.post('assets/php/send-mail.php', {
         "name": $('#contact-name').val(),
         "email": $('#contact-email').val(),
         "subject": $('#contact-subject').val(),
