@@ -1,0 +1,406 @@
+- var version = '6.2.0'
+
+mixin css(link,external)
+	if version && !external
+		link(type="text/css",rel="stylesheet",media="screen",href=link+'?v'+version)
+	else
+		link(type="text/css",rel="stylesheet",media="screen",href=link)
+
+mixin js(link,external)
+	if version && !external
+		script(type="text/javascript",src=link+'?v'+version)
+	else
+		script(type="text/javascript",src=link)
+
+doctype html
+html(lang="en")
+	head
+		title Chris Deacy: Online Portfolio
+		link(rel="icon",type="image/x-icon",href="assets/img/favicon.png")
+
+		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
+		meta(name="viewport",content="width=device-width, initial-scale=1.0")
+		meta(name="description",content="Chris Deacy is a Front End Web Developer. He's passionate about his career, and motivated to learn more whenever necessary.")
+		meta(name="theme-color" content="#3498db")
+
+		+css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',true)
+		+css('//fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic',true)
+		+css('//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,700',true)
+		+css('assets/css/plugins/owl-carousel.min.css',true)
+		+css('assets/css/core-styles.min.css')
+
+		noscript: +css('assets/css/no-js.min.css')
+		
+		<!--[if lte IE 8]>
+		link#bad-ie(type="text/css",rel="stylesheet",media="screen",href="assets/css/bad-ie.min.css")
+		<![endif]-->
+
+	body.loading
+
+		//- Overlay --------
+		#main-overlay.main-overlay
+			span.no-js
+				i.fa.fa-warning
+				| To use this website, please enable Javascript.
+			span.bad-ie
+				i.fa.fa-warning
+				| The browser you're using is outdated. Please download 
+				a(href="//www.google.com/chrome/browser/",target="_blank") Google Chrome
+				|  or 
+				a(href="//www.mozilla.org/en-US/firefox/new/",target="_blank") Mozilla Firefox
+				| .
+			.preloader
+
+		//- Header ---------
+		header(role="banner")
+			.container
+				#nav-toggle.nav-toggle: span
+				span#main-logo.logo: <em>c</em>hris <em>d</em>eacy
+				nav(role="navigation")
+					ul
+						li.current: a(href="#home",data-hover="home") home
+						li: a(href="#services",data-hover="services") services
+						li: a(href="#portfolio",data-hover="portfolio") portfolio
+						li: a(href="#skills",data-hover="skills") skills
+						li: a(href="#codepen",data-hover="codepens") codepens
+						li: a(href="#contact",data-hover="contact") contact
+					#nav-overlay.nav-overlay
+
+		//- Main -----------
+		main(role="main")
+
+			//- Home
+			section#home.landing
+				.wrapper
+					.content
+						h2 I'm Chris Deacy
+						h1 and I make websites
+						h3 Keep scrolling to learn more, or...
+						#contact-me.push-button: span contact me
+
+			//- Services
+			section#services.main-section.services
+				.container
+					.main-heading
+						h1 services
+						h3 What I most commonly work with
+						hr
+					.service-blocks
+						.service-block
+							.inner
+								i.fa.fa-cut
+								span.title psd to html
+								p.info By far, my most experience has come from converting Photoshop PSD documents to Html/CSS/Javascript websites.
+						.service-block
+							.inner
+								i.fa.fa-mobile-phone
+								span.title responsive
+								p.info With a grid, without a grid, my experience covers a wide variety of completely custom responsive development.
+						.service-block
+							.inner
+								i.fa.fa-shopping-cart
+								span.title e-commerce
+								p.info Using platforms like Yahoo, Volusion, and 3DCart, I've developed and/or worked on dozens of e-commerce stores.
+						.service-block
+							.inner
+								i.fa.fa-wordpress
+								span.title wordpress
+								p.info Ranging from simple to advanced customizations, I've personally created multiple themes for clients seeking blog redesigns.
+
+			//- Portfolio
+			section#portfolio.main-section.portfolio
+				.container
+					.main-heading.dark
+						h1 portfolio
+						h3 Recent projects I've worked on
+						hr
+				.portfolio-tiles
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/novella.png",alt="Novella")
+							.overlay
+								.info
+									span.title novella
+									span.desc One-Page Portfolio Mockup
+									span.date
+										i.fa.fa-calendar
+										| 09/30/2014
+								a.link(href="//beekersdesigns.com/themes/Novella",title="Visit Site",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/sharesend.png",alt="ShareSend")
+							.overlay
+								.info
+									span.title sharesend
+									span.desc Image Uploader Mockup
+									span.date
+										i.fa.fa-calendar
+										| 03/09/2014
+								a.link(href="/demo/ShareSend",title="Visit Site",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/sugar.png",alt="Sugar")
+							.overlay
+								.info
+									span.title sugar
+									span.desc Portfolio Theme Mockup
+									span.date
+										i.fa.fa-calendar
+										| 11/08/2013
+								a.link(href="/demo/Sugar",title="Visit Site",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/beasty.png",alt="Beasty")
+							.overlay
+								.info
+									span.title beasty
+									span.desc One-Page Portfolio Mockup
+									span.date
+										i.fa.fa-calendar
+										| 09/24/2013
+								a.link(href="/demo/Beasty",title="Visit Site",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/primody.png",alt="Primody")
+							.overlay
+								.info
+									span.title primody
+									span.desc Gaming Marketplace/Forum
+									span.date
+										i.fa.fa-calendar
+										| 08/15/2012
+								a.link(href="/demo/Primody",title="Visit Site",target="_blank")
+									i.fa.fa-link
+
+			//- Skills
+			- var htmlProgress = "97%"
+			- var cssProgress = "94%"
+			- var jsProgress = "85%"
+			- var sqlProgress = "50%"
+			- var phpProgress = "40%"
+
+			section#skills.main-section.skills
+				.container
+					.main-heading
+						h1 skills
+						h3 What can I do for you
+						hr
+					.tags
+						.tag: span html
+						.tag: span html5
+						.tag: span jade
+						.tag: span photoshop
+						.tag: span psd to html
+						.tag: span css
+						.tag: span css3
+						.tag: span css animations
+						.tag: span sass
+						.tag: span scss
+						.tag: span prepros
+						.tag: span responsive
+						.tag: span bootstrap
+						.tag: span custom grid
+						.tag: span javascript
+						.tag: span jquery
+						.tag: span jquery ui
+						.tag: span json
+						.tag: span coffeescript
+						.tag: span ajax
+						.tag: span php
+						.tag: span wordpress
+						.tag: span sublime text 2
+						.tag: span trello
+						.tag: span toggl
+					.progress-bars
+						.progress-bar
+							.progress(style="width: #{htmlProgress}")
+								span.title html5
+								span.percent= htmlProgress
+								.bar
+							.border
+						.progress-bar
+							.progress(style="width: #{cssProgress}")
+								span.title css3
+								span.percent= cssProgress
+								.bar
+							.border
+						.progress-bar
+							.progress(style="width: #{jsProgress}")
+								span.title javascript
+								span.percent= jsProgress
+								.bar
+							.border
+						.progress-bar
+							.progress(style="width: #{sqlProgress}")
+								span.title sql
+								span.percent= sqlProgress
+								.bar
+							.border
+						.progress-bar
+							.progress(style="width: #{phpProgress}")
+								span.title php
+								span.percent= phpProgress
+								.bar
+							.border
+
+			//- Codepen
+			section#codepen.main-section.codepen
+				.container
+					.main-heading.dark
+						h1 codepens
+						h3 Snippets of code I made
+						hr
+				.portfolio-tiles
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/stylish-social-buttons.png",alt="Stylish Social Buttons")
+							.overlay
+								.info
+									span.title Stylish Social Buttons
+									span.desc CSS, social, buttons, animation
+									span.date
+										i.fa.fa-calendar
+										| 3/22/2015
+								a.link(href="//codepen.io/chrisdothtml/details/azPYqq/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/colorful-css-buttons.png",alt="Colorful CSS Buttons")
+							.overlay
+								.info
+									span.title Colorful CSS Buttons
+									span.desc css, buttons, colorful, awesome, ui
+									span.date
+										i.fa.fa-calendar
+										| 5/4/2015
+								a.link(href="//codepen.io/chrisdothtml/details/waKBdM/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/simple-tile-hover-effect.png",alt="Colorful CSS Buttons")
+							.overlay
+								.info
+									span.title Simple Tile Hover Effect
+									span.desc css, tiles, hover, overlay, text
+									span.date
+										i.fa.fa-calendar
+										| 6/7/2015
+								a.link(href="//codepen.io/chrisdothtml/details/OVmgwK",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/overlay-signup-form.png",alt="Overlay Signup Form")
+							.overlay
+								.info
+									span.title Overlay Signup Form
+									span.desc popup,signup,css,cool
+									span.date
+										i.fa.fa-calendar
+										| 4/12/2015
+								a.link(href="//codepen.io/chrisdothtml/details/EaBOLq/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/responsive-device-morph.png",alt="Responsive Device Morph")
+							.overlay
+								.info
+									span.title Responsive Device Morph
+									span.desc CSS, JS, responsive, morph, device
+									span.date
+										i.fa.fa-calendar
+										| 4/10/2015
+								a.link(href="//codepen.io/chrisdothtml/details/yydKjQ/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/button-concept.png",alt="Button Concept")
+							.overlay
+								.info
+									span.title Button Concept
+									span.desc CSS, button, animate
+									span.date
+										i.fa.fa-calendar
+										| 3/24/2015
+								a.link(href="//codepen.io/chrisdothtml/details/xbmddV/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/classy-website-showcase.png",alt="Classy Website Showcase")
+							.overlay
+								.info
+									span.title Classy Website Showcase
+									span.desc website, showcase, classy, grabbable
+									span.date
+										i.fa.fa-calendar
+										| 4/7/2015
+								a.link(href="//codepen.io/chrisdothtml/details/wBbrjg/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/em-converter.png",alt="Em Converter")
+							.overlay
+								.info
+									span.title Em Converter
+									span.desc em, calculator, px, pt, convert
+									span.date
+										i.fa.fa-calendar
+										| 2/3/2015
+								a.link(href="//codepen.io/chrisdothtml/details/OPxQre/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/sweet-menu-icon.png",alt="Sweet Menu Icon")
+							.overlay
+								.info
+									span.title Sweet Menu Icon
+									span.desc CSS, menu icon, cool, animation
+									span.date
+										i.fa.fa-calendar
+										| 3/27/2015
+								a.link(href="//codepen.io/chrisdothtml/details/LEaEzM/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+
+			//- Contact
+			section#contact.main-section.contact
+				.container
+					.main-heading
+						h1 contact
+						h3 Get in touch with me
+						hr
+					.contact-form
+						form#contact-form(action="#")
+							.top-row
+								input#contact-name(name="contact-name",placeholder="Name")
+								input#contact-email(name="contact-email",placeholder="Email")
+								input#contact-subject(name="contact-subject",placeholder="Subject")
+							textarea#contact-message(name="contact-message",placeholder="Your message")
+							button#contact-submit.push-button: span
+
+		//- Footer ---------
+		footer(role="contentinfo")
+			.container
+				span.left &copy; 2010-2015 chrisdeacy.com/deacy.io. Designed by <a href="//themeforest.net/user/Romaximus" target="_blank">Romaximus</a>.
+				.right
+					a(href="//linkedin.com/in/chrisjdeacy",target="_blank",title="LinkedIn"): i.fa.fa-linkedin
+					a(href="//codepen.io/chrisdothtml",target="_blank",title="CodePen"): i.fa.fa-codepen
+					a(href="//github.com/chrisdothtml",target="_blank",title="Github"): i.fa.fa-github
+
+		#back-to-top.back-to-top: i.fa.fa-chevron-up
+
+		+js('assets/js/google-analytics.min.js')
+		+js('//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js',true)
+		+js('assets/js/plugins/nav.min.js',true)
+		+js('assets/js/plugins/scrollto.min.js',true)
+		+js('assets/js/plugins/owl-carousel.min.js',true)
+
+		<!--[if IE 9]>
+		+js('assets/js/ie9.min.js')
+		<![endif]-->
+		
+		+js('assets/js/plugins.min.js')
+		+js('assets/js/functions.min.js')
+		+js('assets/js/core-scripts.min.js')

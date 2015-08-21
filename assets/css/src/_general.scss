@@ -1,0 +1,204 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #fff;
+	min-width: 300px;
+	font-family: $font-1;
+	color: #000;
+
+	&.loading {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+}
+
+article, aside, footer, header, hgroup, main, nav, section {
+	display: block;
+}
+
+/* Extendables */
+
+.clear:after {
+	display: table;
+	content: "";
+	clear: both;
+}
+
+/* End Extendables */
+
+img {
+	border: 0;
+}
+
+ul {
+	list-style-type: none;
+	@extend .clear;
+
+	li {
+		float: left;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.3s;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+form {
+	display: block;
+}
+
+input,
+button,
+textarea {
+	display: block;
+	border: 0;
+	font-family: $font-1;
+	box-shadow: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+textarea {
+	overflow: auto;
+}
+
+span {
+	display: block;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.container {
+	width: 100%;
+	max-width: 1220px;
+	min-width: 300px;
+	margin: 0 auto;
+	padding: 0 15px;
+	@extend .clear;
+}
+
+.img {
+	text-align: center;
+	overflow: hidden;
+
+	img {
+		position: relative;
+	}
+}
+
+@keyframes errorShake {
+
+	0%, 100% {
+		transform: translateX(0);
+	}
+
+	10%, 30%, 50%, 70%, 90% {
+		transform: translateX(-10px);
+	}
+
+	20%, 40%, 60%, 80% {
+		transform: translateX(10px);
+	}
+}
+
+@keyframes spin {
+
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.main-overlay {
+	display: none;
+	background-color: #fff;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+
+	span {
+		display: none;
+		margin-top: 50px;
+		font-size: 20px;
+		color: #666;
+		vertical-align: middle;
+
+		a {
+			color: #0091d4;
+		}
+	}
+
+	.preloader {
+		background-color: transparent;
+		width: 80px;
+		height: 80px;
+		margin: -40px 0 0 -40px;
+		border: 5px solid #aaa;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border-radius: 50%;
+		animation: spin 1.2s linear infinite;
+
+		&:before,
+		&:after {
+			content: '';
+			width: 90px;
+			height: 90px;
+			border: 5px solid transparent;
+			position: absolute;
+			top: -15px;
+			left: -15px;
+			border-radius: 50%;
+		}
+
+		&:before {
+			border-top-color: $color;
+		}
+
+		&:after {
+			border-bottom-color: $color;
+		}
+	}
+}
+
+.loading .main-overlay {
+	display: block;
+}
