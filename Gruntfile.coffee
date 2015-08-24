@@ -2,50 +2,60 @@ module.exports = (grunt) ->
 
 	grunt.initConfig
 		pkg: grunt.file.readJSON 'package.json'
+		stylesheet: 'core-styles'
+		dirs:
+			html: 'assets/html'
+			css: 'assets/css'
+			js: 'assets/js'
 
 		jade:
-			compile:
-				files:
-					'index.html': ['assets/html/index.jade']
+			src:
+				expand: true
+				cwd: '<%=dirs.html%>/'
+				src: '*.jade'
+				ext: '.html'
 		sass:
 			options:
 				style: 'compressed'
 				sourcemap: false
-			compile:
+			src:
 				files:
-					'assets/css/core-styles.css': 'assets/css/src/core-styles.scss'
+					'<%=dirs.css%>/<%=stylesheet%>.css': '<%=dirs.css%>/src/<%=stylesheet%>.scss'
 		autoprefixer:
-			compile:
-				src: 'assets/css/core-styles.css'
-				dest: ''
+			build:
+				src: '<%=dirs.css%>/<%=stylesheet%>.css'
 		cssmin:
-			compile:
+			build:
 				files:
-					'assets/css/core-styles.min.css': ['assets/css/core-styles.css']
+					'<%=dirs.css%>/<%=stylesheet%>.min.css': '<%=dirs.css%>/<%=stylesheet%>.css'
 		coffee:
-			compile:
-				options:
-					bare: true
-					mangle: true
-				files:
-					'assets/js/core-scripts.js': 'assets/js/src/core-scripts.coffee'
-					'assets/js/functions.js': 'assets/js/src/functions.coffee'
-					'assets/js/plugins.js': 'assets/js/src/plugins.coffee'
+			options:
+				bare: true
+				mangle: true
+			src:
+				expand: true
+				cwd: '<%=dirs.js%>/src/'
+				src: '*.coffee'
+				dest: '<%=dirs.js%>/'
+				ext: '.js'
 		uglify:
-			compile:
-				files:
-					'assets/js/core-scripts.min.js': 'assets/js/core-scripts.js'
-					'assets/js/functions.min.js': 'assets/js/functions.js'
-					'assets/js/plugins.min.js': 'assets/js/plugins.js'
+			build:
+				expand: true
+				cwd: '<%=dirs.js%>/'
+				src: ['functions.js','plugins.js','core-scripts.js']
+				dest: '<%=dirs.js%>/'
+				ext: '.min.js'
 		watch:
-			html:
-				files: ['assets/html/*.jade']
+			options:
+				livereload: true
+			jade:
+				files: ['<%=dirs.html%>/*.jade']
 				tasks: ['jade']
 			sass:
-				files: ['assets/css/src/*.scss']
+				files: ['<%=dirs.css%>/src/*.scss']
 				tasks: ['sass','autoprefixer','cssmin']
 			coffee:
-				files: ['assets/js/src/*.coffee']
+				files: ['<%=dirs.js%>/src/*.coffee']
 				tasks: ['coffee','uglify']
 
 	grunt.loadNpmTasks 'grunt-contrib-jade'
@@ -56,8 +66,4 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
-	# Single Compile
-	#grunt.registerTask 'default', ['jade','sass','autoprefixer','cssmin','coffee','uglify']
-
-	# Default
 	grunt.registerTask 'default', ['watch']
