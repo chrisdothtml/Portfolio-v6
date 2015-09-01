@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "description": "Version 6 of my online portfolio",
-  "version": "6.2.0",
+  "version": "6.2.2",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "^3.0.3",
