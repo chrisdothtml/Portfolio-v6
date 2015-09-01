@@ -2,49 +2,60 @@ module.exports = (grunt) ->
 
 	grunt.initConfig
 		pkg: grunt.file.readJSON 'package.json'
-		stylesheet: 'core-styles'
+
+		# Variables
 		dirs:
 			html: 'assets/html'
 			css: 'assets/css'
 			js: 'assets/js'
 
+		# HTML Tasks
 		jade:
 			src:
 				expand: true
 				cwd: '<%=dirs.html%>/'
 				src: '*.jade'
 				ext: '.html'
+
+		# CSS Tasks
 		sass:
 			options:
 				style: 'compressed'
 				sourcemap: false
 			src:
-				files:
-					'<%=dirs.css%>/<%=stylesheet%>.css': '<%=dirs.css%>/src/<%=stylesheet%>.scss'
+				expand: true
+				src: '<%=dirs.css%>/src/*.scss'
+				ext: '.css'
 		autoprefixer:
-			build:
-				src: '<%=dirs.css%>/<%=stylesheet%>.css'
+			src:
+				expand: true
+				src: '<%=dirs.css%>/src/*.css'
 		cssmin:
-			build:
-				files:
-					'<%=dirs.css%>/<%=stylesheet%>.min.css': '<%=dirs.css%>/<%=stylesheet%>.css'
+			dist:
+				expand: true
+				cwd: '<%=dirs.css%>/src/'
+				src: '*.css'
+				dest: '<%=dirs.css%>/'
+				ext: '.min.css'
+
+		# Javascript Tasks
 		coffee:
 			options:
 				bare: true
 				mangle: true
 			src:
 				expand: true
-				cwd: '<%=dirs.js%>/src/'
-				src: '*.coffee'
-				dest: '<%=dirs.js%>/'
+				src: '<%=dirs.js%>/src/*.coffee'
 				ext: '.js'
 		uglify:
 			build:
 				expand: true
-				cwd: '<%=dirs.js%>/'
-				src: ['functions.js','plugins.js','core-scripts.js']
+				cwd: '<%=dirs.js%>/src/'
+				src: '*.js'
 				dest: '<%=dirs.js%>/'
 				ext: '.min.js'
+
+		# Watch Tasks
 		watch:
 			options:
 				livereload: true
@@ -52,10 +63,10 @@ module.exports = (grunt) ->
 				files: ['<%=dirs.html%>/*.jade']
 				tasks: ['jade']
 			sass:
-				files: ['<%=dirs.css%>/src/*.scss']
+				files: ['<%=dirs.css%>/src/**/*.scss','<%=dirs.css%>/src/*.css']
 				tasks: ['sass','autoprefixer','cssmin']
 			coffee:
-				files: ['<%=dirs.js%>/src/*.coffee']
+				files: ['<%=dirs.js%>/src/*.coffee','<%=dirs.js%>/src/*.js']
 				tasks: ['coffee','uglify']
 
 	grunt.loadNpmTasks 'grunt-contrib-jade'
@@ -66,4 +77,5 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 
-	grunt.registerTask 'default', ['watch']
+	#grunt.registerTask 'default', ['watch']
+	grunt.registerTask 'default', ['jade','sass','autoprefixer','cssmin','coffee','uglify']
