@@ -1,4 +1,4 @@
-- var version = '6.2.0'
+- var version = '6.2.1'
 
 mixin css(link,external)
 	if version && !external
@@ -26,8 +26,8 @@ html(lang="en")
 		+css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css',true)
 		+css('//fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic',true)
 		+css('//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,700',true)
-		+css('assets/css/plugins/owl-carousel.min.css',true)
-		+css('assets/css/core-styles.min.css')
+		+css('assets/css/ext/owl-carousel.css',true)
+		+css('assets/css/core.min.css')
 
 		noscript: +css('assets/css/no-js.min.css')
 		
@@ -249,15 +249,15 @@ html(lang="en")
 				.portfolio-tiles
 					.portfolio-tile
 						.inner
-							img(src="assets/img/nf-img/stylish-social-buttons.png",alt="Stylish Social Buttons")
+							img(src="assets/img/nf-img/interactive-panel-elements.png",alt="Interactive Panel Elements")
 							.overlay
 								.info
-									span.title Stylish Social Buttons
-									span.desc CSS, social, buttons, animation
+									span.title Interactive Panel Elements
+									span.desc panel, elements, interactive, swipe, hammerjs
 									span.date
 										i.fa.fa-calendar
-										| 3/22/2015
-								a.link(href="//codepen.io/chrisdothtml/details/azPYqq/",title="Visit Pen",target="_blank")
+										| 8/26/2015
+								a.link(href="//codepen.io/chrisdothtml/details/LpPpyR/",title="Visit Pen",target="_blank")
 									i.fa.fa-link
 					.portfolio-tile
 						.inner
@@ -270,6 +270,18 @@ html(lang="en")
 										i.fa.fa-calendar
 										| 5/4/2015
 								a.link(href="//codepen.io/chrisdothtml/details/waKBdM/",title="Visit Pen",target="_blank")
+									i.fa.fa-link
+					.portfolio-tile
+						.inner
+							img(src="assets/img/nf-img/stylish-social-buttons.png",alt="Stylish Social Buttons")
+							.overlay
+								.info
+									span.title Stylish Social Buttons
+									span.desc CSS, social, buttons, animation
+									span.date
+										i.fa.fa-calendar
+										| 3/22/2015
+								a.link(href="//codepen.io/chrisdothtml/details/azPYqq/",title="Visit Pen",target="_blank")
 									i.fa.fa-link
 					.portfolio-tile
 						.inner
@@ -385,9 +397,9 @@ html(lang="en")
 
 		+js('assets/js/google-analytics.min.js')
 		+js('//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js',true)
-		+js('assets/js/plugins/nav.min.js',true)
-		+js('assets/js/plugins/scrollto.min.js',true)
-		+js('assets/js/plugins/owl-carousel.min.js',true)
+		+js('assets/js/ext/nav.js',true)
+		+js('assets/js/ext/scrollto.js',true)
+		+js('assets/js/ext/owl-carousel.js',true)
 
 		<!--[if IE 9]>
 		+js('assets/js/ie9.min.js')
@@ -395,4 +407,4 @@ html(lang="en")
 		
 		+js('assets/js/plugins.min.js')
 		+js('assets/js/functions.min.js')
-		+js('assets/js/core-scripts.min.js')
+		+js('assets/js/core.min.js')
