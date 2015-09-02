@@ -20,8 +20,9 @@ module.exports = (grunt) ->
 		# CSS Tasks
 		sass:
 			options:
-				style: 'compressed'
-				sourcemap: false
+				outputStyle: 'expanded'
+				indentType: 'tab'
+				indentWidth: '1'
 			src:
 				expand: true
 				src: '<%=dirs.css%>/src/*.scss'
