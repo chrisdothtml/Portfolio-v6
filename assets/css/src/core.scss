@@ -1,49 +1,16 @@
 /*
- *
- * Author: Chris Deacy
- * Do not duplicate
- *
- * ------------------------------------------------------------
- *
- * Table of Contents
- * 
- * 1.0 - Reset & General
- * 2.0 - Siteframe
- * 3.0 - Main Content
- * 4.0 - Media Queries
- *
+ * File: core.scss
+ * Description: Parent stylesheet file. Imports all child sheets.
  */
 
-@import 'import/config';
+$color: #3498db;
+$color-darker: #2980b9;
+$color-2: #99a1ad;
+$font-1: 'Lato', sans-serif;
+$font-2: 'Yanone Kaffeesatz', sans-serif;
 
-/*
----------------------------------------------------------------
- * 1.0 - Reset & General
----------------------------------------------------------------
- */
-
-@import 'import/general';
-
-/*
----------------------------------------------------------------
- * 2.0 - Siteframe
----------------------------------------------------------------
- */
-
+@import 'import/reset';
+@import 'import/global';
 @import 'import/siteframe';
-
-/*
----------------------------------------------------------------
- * 3.0 - Main Content
----------------------------------------------------------------
- */
-
-@import 'import/main-content';
-
-/*
----------------------------------------------------------------
- * 4.0 - Media Queries
----------------------------------------------------------------
- */
-
+@import 'import/main';
 @import 'import/media-queries';
